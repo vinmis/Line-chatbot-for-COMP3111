@@ -63,6 +63,17 @@ public class KitchenSinkTester {
 	}
 	
 	@Test
+	public void test2NotFound() throws Exception {
+		boolean thrown = false;
+		try {
+			this.databaseEngine.search("no");
+		} catch (Exception e) {
+			thrown = true;
+		}
+		assertThat(thrown).isEqualTo(true);
+	}
+	
+	@Test
 	public void testFound() throws Exception {
 		boolean thrown = false;
 		String result = null;

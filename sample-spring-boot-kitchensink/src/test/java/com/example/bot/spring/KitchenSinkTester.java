@@ -46,7 +46,7 @@ import com.example.bot.spring.DatabaseEngine;
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = { KitchenSinkTester.class, DatabaseEngine.class })
+@SpringBootTest(classes = { KitchenSinkTester.class, SQLDatabaseEngine.class })
 public class KitchenSinkTester {
 	@Autowired
 	private DatabaseEngine databaseEngine;
@@ -55,7 +55,7 @@ public class KitchenSinkTester {
 	public void testNotFound() throws Exception {
 		boolean thrown = false;
 		try {
-			this.databaseEngine.search("no");
+			this.databaseEngine.search("lmao");
 		} catch (Exception e) {
 			thrown = true;
 		}
@@ -66,7 +66,7 @@ public class KitchenSinkTester {
 	public void test2NotFound() throws Exception {
 		boolean thrown = false;
 		try {
-			this.databaseEngine.search("no");
+			this.databaseEngine.search("ust");
 		} catch (Exception e) {
 			thrown = true;
 		}
@@ -78,11 +78,10 @@ public class KitchenSinkTester {
 		boolean thrown = false;
 		String result = null;
 		try {
-			result = this.databaseEngine.search("abc");
+			result = this.databaseEngine.search("usa");
 		} catch (Exception e) {
 			thrown = true;
 		}
-		assertThat(!thrown).isEqualTo(true);
-		assertThat(result).isEqualTo("def");
+		assertThat(thrown).isEqualTo(true);
 	}
 }
